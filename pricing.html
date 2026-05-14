@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定价 - MeifuAI</title>
+    <link rel="icon" type="image/png" href="https://meifu.tech/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pricing.css">
+</head>
+<body>
+    <!-- 背景装饰 -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+    <div class="bg-grid"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                <span class="logo-text">MeifuAI</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="pricing.html" class="nav-link active">定价</a>
+                <a href="docs.html" class="nav-link">文档</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-login">登录</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="菜单">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="pricing-main">
+        <!-- 页面标题 -->
+        <section class="pricing-header">
+            <h1 class="pricing-title fade-in">模型定价</h1>
+            <p class="pricing-desc fade-in">透明计费，按量付费，用多少花多少</p>
+        </section>
+
+        <!-- 筛选器 -->
+        <section class="pricing-filters fade-in">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">全部</button>
+                <button class="filter-tab" data-filter="openai">OpenAI</button>
+                <button class="filter-tab" data-filter="anthropic">Anthropic</button>
+                <button class="filter-tab" data-filter="google">Google</button>
+                <button class="filter-tab" data-filter="zhipu">智谱</button>
+                <button class="filter-tab" data-filter="moonshot">月之暗面</button>
+                <button class="filter-tab" data-filter="qwen">通义千问</button>
+                <button class="filter-tab" data-filter="minimax">MiniMax</button>
+            </div>
+        </section>
+
+        <!-- 定价表格 -->
+        <section class="pricing-table-section fade-in">
+            <div class="pricing-table-container">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>模型</th>
+                            <th>提供商</th>
+                            <th>输入价格</th>
+                            <th>输出价格</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pricingBody">
+                        <!-- OpenAI GPT 系列 -->
+                        <tr data-provider="openai">
+                            <td class="model-name">gpt-4o</td>
+                            <td class="provider-tag openai">OpenAI</td>
+                            <td>¥2.5 / 1M tokens</td>
+                            <td>¥10.0 / 1M tokens</td>
+                            <td>最新旗舰模型</td>
+                        </tr>
+                        <tr data-provider="openai">
+                            <td class="model-name">gpt-4o-mini</td>
+                            <td class="provider-tag openai">OpenAI</td>
+                            <td>¥0.15 / 1M tokens</td>
+                            <td>¥0.6 / 1M tokens</td>
+                            <td>轻量高效</td>
+                        </tr>
+                        <tr data-provider="openai">
+                            <td class="model-name">gpt-4-turbo</td>
+                            <td class="provider-tag openai">OpenAI</td>
+                            <td>¥1.0 / 1M tokens</td>
+                            <td>¥3.0 / 1M tokens</td>
+                            <td>128K 上下文</td>
+                        </tr>
+                        <tr data-provider="openai">
+                            <td class="model-name">gpt-3.5-turbo</td>
+                            <td class="provider-tag openai">OpenAI</td>
+                            <td>¥0.05 / 1M tokens</td>
+                            <td>¥0.15 / 1M tokens</td>
+                            <td>性价比首选</td>
+                        </tr>
+                        <tr data-provider="openai">
+                            <td class="model-name">gpt-image-2</td>
+                            <td class="provider-tag openai">OpenAI</td>
+                            <td>-</td>
+                            <td>¥0.1 / 张</td>
+                            <td>图片生成</td>
+                        </tr>
+                        <tr data-provider="openai">
+                            <td class="model-name">dall-e-3</td>
+                            <td class="provider-tag openai">OpenAI</td>
+                            <td>-</td>
+                            <td>¥0.4 / 张</td>
+                            <td>高质量图片</td>
+                        </tr>
+                        <!-- Anthropic Claude 系列 -->
+                        <tr data-provider="anthropic">
+                            <td class="model-name">claude-opus-4</td>
+                            <td class="provider-tag anthropic">Anthropic</td>
+                            <td>¥15.0 / 1M tokens</td>
+                            <td>¥75.0 / 1M tokens</td>
+                            <td>最强推理能力</td>
+                        </tr>
+                        <tr data-provider="anthropic">
+                            <td class="model-name">claude-sonnet-4</td>
+                            <td class="provider-tag anthropic">Anthropic</td>
+                            <td>¥3.0 / 1M tokens</td>
+                            <td>¥15.0 / 1M tokens</td>
+                            <td>平衡性能与价格</td>
+                        </tr>
+                        <tr data-provider="anthropic">
+                            <td class="model-name">claude-3.5-sonnet</td>
+                            <td class="provider-tag anthropic">Anthropic</td>
+                            <td>¥2.1 / 1M tokens</td>
+                            <td>¥10.5 / 1M tokens</td>
+                            <td>高速响应</td>
+                        </tr>
+                        <tr data-provider="anthropic">
+                            <td class="model-name">claude-3-haiku</td>
+                            <td class="provider-tag anthropic">Anthropic</td>
+                            <td>¥0.25 / 1M tokens</td>
+                            <td>¥1.25 / 1M tokens</td>
+                            <td>极速轻量</td>
+                        </tr>
+                        <!-- Google Gemini 系列 -->
+                        <tr data-provider="google">
+                            <td class="model-name">gemini-2.5-pro</td>
+                            <td class="provider-tag google">Google</td>
+                            <td>¥1.25 / 1M tokens</td>
+                            <td>¥5.0 / 1M tokens</td>
+                            <td>最新 Gemini Pro</td>
+                        </tr>
+                        <tr data-provider="google">
+                            <td class="model-name">gemini-2.5-flash</td>
+                            <td class="provider-tag google">Google</td>
+                            <td>¥0.075 / 1M tokens</td>
+                            <td>¥0.3 / 1M tokens</td>
+                            <td>快速响应</td>
+                        </tr>
+                        <tr data-provider="google">
+                            <td class="model-name">gemini-1.5-pro</td>
+                            <td class="provider-tag google">Google</td>
+                            <td>¥0.35 / 1M tokens</td>
+                            <td>¥1.4 / 1M tokens</td>
+                            <td>1M 上下文</td>
+                        </tr>
+                        <!-- 智谱 GLM 系列 -->
+                        <tr data-provider="zhipu">
+                            <td class="model-name">glm-4-plus</td>
+                            <td class="provider-tag zhipu">智谱</td>
+                            <td>¥0.05 / 1K tokens</td>
+                            <td>¥0.05 / 1K tokens</td>
+                            <td>国产旗舰</td>
+                        </tr>
+                        <tr data-provider="zhipu">
+                            <td class="model-name">glm-4-flash</td>
+                            <td class="provider-tag zhipu">智谱</td>
+                            <td>¥0.01 / 1K tokens</td>
+                            <td>¥0.01 / 1K tokens</td>
+                            <td>免费体验</td>
+                        </tr>
+                        <tr data-provider="zhipu">
+                            <td class="model-name">glm-4-air</td>
+                            <td class="provider-tag zhipu">智谱</td>
+                            <td>¥0.001 / 1K tokens</td>
+                            <td>¥0.001 / 1K tokens</td>
+                            <td>超低价</td>
+                        </tr>
+                        <!-- 月之暗面 Kimi -->
+                        <tr data-provider="moonshot">
+                            <td class="model-name">moonshot-v1-8k</td>
+                            <td class="provider-tag moonshot">月之暗面</td>
+                            <td>¥0.012 / 1K tokens</td>
+                            <td>¥0.012 / 1K tokens</td>
+                            <td>长文本处理</td>
+                        </tr>
+                        <tr data-provider="moonshot">
+                            <td class="model-name">moonshot-v1-32k</td>
+                            <td class="provider-tag moonshot">月之暗面</td>
+                            <td>¥0.024 / 1K tokens</td>
+                            <td>¥0.024 / 1K tokens</td>
+                            <td>32K 上下文</td>
+                        </tr>
+                        <tr data-provider="moonshot">
+                            <td class="model-name">moonshot-v1-128k</td>
+                            <td class="provider-tag moonshot">月之暗面</td>
+                            <td>¥0.06 / 1K tokens</td>
+                            <td>¥0.06 / 1K tokens</td>
+                            <td>128K 上下文</td>
+                        </tr>
+                        <!-- 通义千问 Qwen -->
+                        <tr data-provider="qwen">
+                            <td class="model-name">qwen-max</td>
+                            <td class="provider-tag qwen">通义千问</td>
+                            <td>¥0.04 / 1K tokens</td>
+                            <td>¥0.12 / 1K tokens</td>
+                            <td>阿里旗舰</td>
+                        </tr>
+                        <tr data-provider="qwen">
+                            <td class="model-name">qwen-plus</td>
+                            <td class="provider-tag qwen">通义千问</td>
+                            <td>¥0.004 / 1K tokens</td>
+                            <td>¥0.012 / 1K tokens</td>
+                            <td>平衡性能</td>
+                        </tr>
+                        <tr data-provider="qwen">
+                            <td class="model-name">qwen-turbo</td>
+                            <td class="provider-tag qwen">通义千问</td>
+                            <td>¥0.002 / 1K tokens</td>
+                            <td>¥0.006 / 1K tokens</td>
+                            <td>高速低成本</td>
+                        </tr>
+                        <!-- MiniMax -->
+                        <tr data-provider="minimax">
+                            <td class="model-name">abab6.5-chat</td>
+                            <td class="provider-tag minimax">MiniMax</td>
+                            <td>¥0.03 / 1K tokens</td>
+                            <td>¥0.03 / 1K tokens</td>
+                            <td>海螺AI</td>
+                        </tr>
+                        <tr data-provider="minimax">
+                            <td class="model-name">abab5.5-chat</td>
+                            <td class="provider-tag minimax">MiniMax</td>
+                            <td>¥0.015 / 1K tokens</td>
+                            <td>¥0.015 / 1K tokens</td>
+                            <td>经济版</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 计费说明 -->
+        <section class="pricing-notes fade-in">
+            <h2 class="notes-title">计费说明</h2>
+            <div class="notes-grid">
+                <div class="note-card">
+                    <div class="note-icon">📊</div>
+                    <h3>按量计费</h3>
+                    <p>严格按实际使用的 Token 数量计费，无最低消费门槛</p>
+                </div>
+                <div class="note-card">
+                    <div class="note-icon">💰</div>
+                    <h3>余额充值</h3>
+                    <p>充值后即可使用，余额永久有效，随时可查账单明细</p>
+                </div>
+                <div class="note-card">
+                    <div class="note-icon">🔒</div>
+                    <h3>数据安全</h3>
+                    <p>您的请求内容和数据不会被存储，保护隐私安全</p>
+                </div>
+                <div class="note-card">
+                    <div class="note-icon">⚡</div>
+                    <h3>实时结算</h3>
+                    <p>费用实时扣除，用量明细即时更新，消费透明可控</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="pricing-cta fade-in">
+            <h2>立即开始使用</h2>
+            <p>注册即可获取 API Key，开始调用各大模型</p>
+            <a href="register.html" class="btn-primary btn-large">免费注册</a>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                <span>MeifuAI</span>
+            </div>
+            <div class="footer-links">
+                <a href="docs.html">文档</a>
+                <a href="pricing.html">定价</a>
+                <a href="login.html">登录</a>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2025 MeifuAI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/pricing.js"></script>
+</body>
+</html>

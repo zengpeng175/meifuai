@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - MeifuAI</title>
+    <link rel="icon" type="image/png" href="https://meifu.tech/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 背景装饰 -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+    <div class="bg-grid"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                <span class="logo-text">MeifuAI</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#" class="nav-link active">首页</a>
+                <a href="pricing.html" class="nav-link">定价</a>
+                <a href="docs.html" class="nav-link">文档</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-login">登录</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="菜单">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main>
+        <!-- Hero 区域 -->
+        <section class="hero" id="hero">
+            <div class="hero-badge fade-in">
+                <span class="badge-dot"></span>
+                NEW RELEASE — GPT-IMAGE-2 已上线
+            </div>
+            <h1 class="hero-title fade-in">
+                GPT-IMAGE-2，<em>正式上线</em>
+            </h1>
+            <p class="hero-desc fade-in">
+                图片生成低至 0.1 元 / 张，现已在 meifu.tech 开放使用
+            </p>
+            <p class="hero-sub fade-in">
+                统一接口接入全球主流大模型，主站与文档入口已同步更新
+            </p>
+            <div class="hero-actions fade-in">
+                <a href="login.html" class="btn-primary">立即开始</a>
+                <a href="docs.html" class="btn-secondary">查看文档</a>
+            </div>
+
+            <!-- 终端演示 -->
+            <div class="terminal-container fade-in">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
+                        </div>
+                        <div class="terminal-title">TERMINAL</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="code-line line-1">
+                            <span class="code-prompt">$</span>
+                            <span class="code-cmd">curl</span>
+                            <span class="code-flag">--request</span>
+                            <span class="code-cmd">POST</span>
+                            <span class="code-flag">\</span>
+                        </div>
+                        <div class="code-line line-2">
+                            <span class="code-url">https://meifu.tech/v1/chat/completions</span>
+                            <span class="code-flag">\</span>
+                        </div>
+                        <div class="code-line line-3">
+                            <span class="code-flag">-H</span>
+                            <span class="code-comment">"Authorization: Bearer YOUR_KEY"</span>
+                            <span class="code-flag">\</span>
+                        </div>
+                        <div class="code-line line-4">
+                            <span class="code-flag">-d</span>
+                            <span class="code-comment">'{"model":"gpt-image-2"}'</span>
+                        </div>
+                        <div class="code-line line-5">
+                            <span class="code-success">200 OK</span>
+                            <span class="code-response">→ 图片生成成功</span>
+                            <span class="cursor"></span>
+                        </div>
+                    </div>
+                </div>
+                <a href="login.html" class="terminal-link">
+                    访问 meifu.tech ↗
+                </a>
+            </div>
+        </section>
+
+        <!-- 特性区域 -->
+        <section class="features" id="features">
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">全模型覆盖</h3>
+                    <p class="feature-desc">Claude / GPT / GPT-Image / Gemini 全系列支持，国产 GLM / Kimi / MiniMax / Qwen 同步接入，一个接口通达所有前沿模型。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">稳定可靠</h3>
+                    <p class="feature-desc">高可用架构设计，全链路实时监控，服务可用性始终放在第一位，为您的业务保驾护航。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">极致性价比</h3>
+                    <p class="feature-desc">全网第一梯队定价，多种渠道、多档价位自由选择，用更低的成本接入更强的模型。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">计费透明</h3>
+                    <p class="feature-desc">严格按量计费，零隐藏费用，账单明细随时可查，用多少花多少，清清楚楚。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 支持的模型 -->
+        <section class="models" id="models">
+            <h2 class="section-title fade-in">支持的模型</h2>
+            <div class="models-marquee fade-in">
+                <div class="marquee-track">
+                    <div class="model-item">
+                        <div class="model-logo openai"></div>
+                        <span>OpenAI (GPT)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo anthropic"></div>
+                        <span>Anthropic (Claude)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo google"></div>
+                        <span>Google (Gemini)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo zhipu"></div>
+                        <span>智谱 (GLM)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo moonshot"></div>
+                        <span>月之暗面 (Kimi)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo minimax"></div>
+                        <span>MiniMax</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo qwen"></div>
+                        <span>通义千问 (Qwen)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo more"></div>
+                        <span>更多模型持续接入中...</span>
+                    </div>
+                    <!-- 重复一组用于无缝滚动 -->
+                    <div class="model-item">
+                        <div class="model-logo openai"></div>
+                        <span>OpenAI (GPT)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo anthropic"></div>
+                        <span>Anthropic (Claude)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo google"></div>
+                        <span>Google (Gemini)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo zhipu"></div>
+                        <span>智谱 (GLM)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo moonshot"></div>
+                        <span>月之暗面 (Kimi)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo minimax"></div>
+                        <span>MiniMax</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo qwen"></div>
+                        <span>通义千问 (Qwen)</span>
+                    </div>
+                    <div class="model-item">
+                        <div class="model-logo more"></div>
+                        <span>更多模型持续接入中...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA 区域 -->
+        <section class="cta" id="cta">
+            <div class="cta-content fade-in">
+                <h2 class="cta-title">现在切到 <em>meifu.tech</em></h2>
+                <p class="cta-desc">主站、控制台与文档入口已同步更新，图片生成低至 0.1 元 / 张</p>
+                <div class="cta-actions">
+                    <a href="register.html" class="btn-primary btn-large">立即开始</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                <span>MeifuAI</span>
+            </div>
+            <div class="footer-links">
+                <a href="docs.html">文档</a>
+                <a href="pricing.html">定价</a>
+                <a href="login.html">登录</a>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2025 MeifuAI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

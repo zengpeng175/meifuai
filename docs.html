@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档 - MeifuAI</title>
+    <link rel="icon" type="image/png" href="https://meifu.tech/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+    <!-- 背景装饰 -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+    <div class="bg-grid"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                <span class="logo-text">MeifuAI</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="pricing.html" class="nav-link">定价</a>
+                <a href="docs.html" class="nav-link active">文档</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-login">登录</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="菜单">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="docs-main">
+        <!-- 侧边栏 -->
+        <aside class="docs-sidebar" id="docsSidebar">
+            <div class="sidebar-header">
+                <h3>文档导航</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#quickstart" class="sidebar-link active">快速开始</a>
+                <a href="#authentication" class="sidebar-link">认证方式</a>
+                <a href="#chat-api" class="sidebar-link">Chat 对话 API</a>
+                <a href="#image-api" class="sidebar-link">图片生成 API</a>
+                <a href="#models" class="sidebar-link">模型列表</a>
+                <a href="#errors" class="sidebar-link">错误码</a>
+                <a href="#rate-limit" class="sidebar-link">速率限制</a>
+                <a href="#sdk" class="sidebar-link">SDK & 示例</a>
+            </nav>
+        </aside>
+
+        <!-- 文档内容 -->
+        <div class="docs-content">
+            <!-- 快速开始 -->
+            <section class="docs-section fade-in" id="quickstart">
+                <h1>快速开始</h1>
+                <p class="docs-intro">MeifuAI 提供与 OpenAI API 完全兼容的接口，您可以在不修改代码的情况下无缝切换。</p>
+
+                <div class="info-card">
+                    <div class="info-icon">💡</div>
+                    <div>
+                        <strong>Base URL</strong>
+                        <code>https://meifu.tech/v1</code>
+                    </div>
+                </div>
+
+                <h2>三步开始使用</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h3>注册并获取 API Key</h3>
+                            <p>前往 <a href="register.html">注册页面</a> 创建账户，在控制台中生成您的 API Key。</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h3>配置 Base URL</h3>
+                            <p>将您的 API 客户端 Base URL 设置为 <code>https://meifu.tech/v1</code></p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h3>开始调用</h3>
+                            <p>使用与 OpenAI 完全相同的接口格式调用任何支持的模型。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 认证方式 -->
+            <section class="docs-section fade-in" id="authentication">
+                <h1>认证方式</h1>
+                <p>MeifuAI 使用 Bearer Token 进行认证。在请求头中添加 <code>Authorization</code> 字段即可。</p>
+
+                <h2>请求头格式</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>HTTP Header</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>Authorization: Bearer sk-your-api-key-here</code></pre>
+                </div>
+
+                <h2>Curl 示例</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>bash</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>curl https://meifu.tech/v1/chat/completions \
+  -H "Authorization: Bearer sk-your-api-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-4o",
+    "messages": [
+      {"role": "user", "content": "Hello!"}
+    ]
+  }'</code></pre>
+                </div>
+            </section>
+
+            <!-- Chat 对话 API -->
+            <section class="docs-section fade-in" id="chat-api">
+                <h1>Chat 对话 API</h1>
+                <p>与 OpenAI Chat Completions API 完全兼容，支持流式输出。</p>
+
+                <div class="api-endpoint">
+                    <span class="method post">POST</span>
+                    <code>/v1/chat/completions</code>
+                </div>
+
+                <h2>请求参数</h2>
+                <div class="param-table-container">
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>类型</th>
+                                <th>必填</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>model</code></td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td>模型 ID，如 <code>gpt-4o</code>、<code>claude-sonnet-4</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>messages</code></td>
+                                <td>array</td>
+                                <td>是</td>
+                                <td>消息列表，每条包含 <code>role</code> 和 <code>content</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>temperature</code></td>
+                                <td>float</td>
+                                <td>否</td>
+                                <td>生成温度，0-2 之间，默认 1</td>
+                            </tr>
+                            <tr>
+                                <td><code>max_tokens</code></td>
+                                <td>integer</td>
+                                <td>否</td>
+                                <td>最大生成 token 数</td>
+                            </tr>
+                            <tr>
+                                <td><code>stream</code></td>
+                                <td>boolean</td>
+                                <td>否</td>
+                                <td>是否启用流式输出，默认 false</td>
+                            </tr>
+                            <tr>
+                                <td><code>top_p</code></td>
+                                <td>float</td>
+                                <td>否</td>
+                                <td>核采样参数，0-1 之间</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>请求示例</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>python</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>from openai import OpenAI
+
+client = OpenAI(
+    api_key="sk-your-api-key",
+    base_url="https://meifu.tech/v1"
+)
+
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Hello!"}
+    ],
+    stream=True
+)
+
+for chunk in response:
+    if chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="")</code></pre>
+                </div>
+
+                <h2>响应格式</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>json</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>{
+  "id": "chatcmpl-abc123",
+  "object": "chat.completion",
+  "created": 1677858242,
+  "model": "gpt-4o",
+  "choices": [{
+    "index": 0,
+    "message": {
+      "role": "assistant",
+      "content": "Hello! How can I help you today?"
+    },
+    "finish_reason": "stop"
+  }],
+  "usage": {
+    "prompt_tokens": 13,
+    "completion_tokens": 7,
+    "total_tokens": 20
+  }
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- 图片生成 API -->
+            <section class="docs-section fade-in" id="image-api">
+                <h1>图片生成 API</h1>
+                <p>支持 GPT-Image-2、DALL-E 3 等图片生成模型。</p>
+
+                <div class="api-endpoint">
+                    <span class="method post">POST</span>
+                    <code>/v1/images/generations</code>
+                </div>
+
+                <h2>请求参数</h2>
+                <div class="param-table-container">
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>参数</th>
+                                <th>类型</th>
+                                <th>必填</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>model</code></td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td><code>gpt-image-2</code> 或 <code>dall-e-3</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>prompt</code></td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td>图片描述文本</td>
+                            </tr>
+                            <tr>
+                                <td><code>n</code></td>
+                                <td>integer</td>
+                                <td>否</td>
+                                <td>生成数量，默认 1</td>
+                            </tr>
+                            <tr>
+                                <td><code>size</code></td>
+                                <td>string</td>
+                                <td>否</td>
+                                <td>图片尺寸，如 <code>1024x1024</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>请求示例</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>python</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>response = client.images.generate(
+    model="gpt-image-2",
+    prompt="A cute cat wearing a hat, digital art",
+    n=1,
+    size="1024x1024"
+)
+
+print(response.data[0].url)</code></pre>
+                </div>
+            </section>
+
+            <!-- 模型列表 -->
+            <section class="docs-section fade-in" id="models">
+                <h1>模型列表</h1>
+                <p>以下是当前支持的所有模型。调用时使用模型 ID 作为 <code>model</code> 参数值。</p>
+
+                <div class="api-endpoint">
+                    <span class="method get">GET</span>
+                    <code>/v1/models</code>
+                </div>
+
+                <h2>支持的模型</h2>
+                <div class="param-table-container">
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>模型 ID</th>
+                                <th>提供商</th>
+                                <th>类型</th>
+                                <th>上下文</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>gpt-4o</code></td><td>OpenAI</td><td>对话</td><td>128K</td></tr>
+                            <tr><td><code>gpt-4o-mini</code></td><td>OpenAI</td><td>对话</td><td>128K</td></tr>
+                            <tr><td><code>gpt-4-turbo</code></td><td>OpenAI</td><td>对话</td><td>128K</td></tr>
+                            <tr><td><code>gpt-3.5-turbo</code></td><td>OpenAI</td><td>对话</td><td>16K</td></tr>
+                            <tr><td><code>gpt-image-2</code></td><td>OpenAI</td><td>图片</td><td>-</td></tr>
+                            <tr><td><code>dall-e-3</code></td><td>OpenAI</td><td>图片</td><td>-</td></tr>
+                            <tr><td><code>claude-opus-4</code></td><td>Anthropic</td><td>对话</td><td>200K</td></tr>
+                            <tr><td><code>claude-sonnet-4</code></td><td>Anthropic</td><td>对话</td><td>200K</td></tr>
+                            <tr><td><code>claude-3.5-sonnet</code></td><td>Anthropic</td><td>对话</td><td>200K</td></tr>
+                            <tr><td><code>claude-3-haiku</code></td><td>Anthropic</td><td>对话</td><td>200K</td></tr>
+                            <tr><td><code>gemini-2.5-pro</code></td><td>Google</td><td>对话</td><td>1M</td></tr>
+                            <tr><td><code>gemini-2.5-flash</code></td><td>Google</td><td>对话</td><td>1M</td></tr>
+                            <tr><td><code>gemini-1.5-pro</code></td><td>Google</td><td>对话</td><td>1M</td></tr>
+                            <tr><td><code>glm-4-plus</code></td><td>智谱</td><td>对话</td><td>128K</td></tr>
+                            <tr><td><code>glm-4-flash</code></td><td>智谱</td><td>对话</td><td>128K</td></tr>
+                            <tr><td><code>moonshot-v1-8k</code></td><td>月之暗面</td><td>对话</td><td>8K</td></tr>
+                            <tr><td><code>moonshot-v1-128k</code></td><td>月之暗面</td><td>对话</td><td>128K</td></tr>
+                            <tr><td><code>qwen-max</code></td><td>通义千问</td><td>对话</td><td>32K</td></tr>
+                            <tr><td><code>qwen-plus</code></td><td>通义千问</td><td>对话</td><td>128K</td></tr>
+                            <tr><td><code>abab6.5-chat</code></td><td>MiniMax</td><td>对话</td><td>128K</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 错误码 -->
+            <section class="docs-section fade-in" id="errors">
+                <h1>错误码</h1>
+                <p>当请求失败时，API 会返回相应的 HTTP 状态码和错误信息。</p>
+
+                <div class="param-table-container">
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>状态码</th>
+                                <th>类型</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>400</code></td>
+                                <td>Bad Request</td>
+                                <td>请求参数错误或格式不正确</td>
+                            </tr>
+                            <tr>
+                                <td><code>401</code></td>
+                                <td>Unauthorized</td>
+                                <td>API Key 无效或已过期</td>
+                            </tr>
+                            <tr>
+                                <td><code>403</code></td>
+                                <td>Forbidden</td>
+                                <td>无权访问该模型或资源</td>
+                            </tr>
+                            <tr>
+                                <td><code>429</code></td>
+                                <td>Rate Limit</td>
+                                <td>请求频率超出限制，请稍后重试</td>
+                            </tr>
+                            <tr>
+                                <td><code>500</code></td>
+                                <td>Server Error</td>
+                                <td>服务端内部错误</td>
+                            </tr>
+                            <tr>
+                                <td><code>502</code></td>
+                                <td>Bad Gateway</td>
+                                <td>上游服务不可用</td>
+                            </tr>
+                            <tr>
+                                <td><code>503</code></td>
+                                <td>Unavailable</td>
+                                <td>服务暂时不可用</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>错误响应格式</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>json</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>{
+  "error": {
+    "message": "Invalid API key provided",
+    "type": "invalid_request_error",
+    "code": "invalid_api_key"
+  }
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- 速率限制 -->
+            <section class="docs-section fade-in" id="rate-limit">
+                <h1>速率限制</h1>
+                <p>为保证服务质量，API 请求受到速率限制。</p>
+
+                <div class="info-card warning">
+                    <div class="info-icon">⚠️</div>
+                    <div>
+                        <strong>速率限制</strong>
+                        <p>不同用户等级有不同的速率限制。如需提高限制，请联系客服。</p>
+                    </div>
+                </div>
+
+                <div class="param-table-container">
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>限制类型</th>
+                                <th>免费用户</th>
+                                <th>付费用户</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RPM（每分钟请求数）</td>
+                                <td>20</td>
+                                <td>60</td>
+                            </tr>
+                            <tr>
+                                <td>TPM（每分钟 Token 数）</td>
+                                <td>40,000</td>
+                                <td>200,000</td>
+                            </tr>
+                            <tr>
+                                <td>并发请求数</td>
+                                <td>2</td>
+                                <td>10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>响应头</h2>
+                <p>每个响应都包含速率限制相关的头部信息：</p>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>HTTP Headers</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 45
+X-RateLimit-Reset: 1677858300</code></pre>
+                </div>
+            </section>
+
+            <!-- SDK & 示例 -->
+            <section class="docs-section fade-in" id="sdk">
+                <h1>SDK & 示例</h1>
+                <p>MeifuAI 兼容 OpenAI SDK，直接替换 <code>base_url</code> 即可使用。</p>
+
+                <h2>Python</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>bash</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>pip install openai</code></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>python</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>from openai import OpenAI
+
+client = OpenAI(
+    api_key="sk-your-api-key",
+    base_url="https://meifu.tech/v1"
+)
+
+# 同步调用
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "你好"}]
+)
+print(response.choices[0].message.content)
+
+# 流式调用
+stream = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "你好"}],
+    stream=True
+)
+for chunk in stream:
+    if chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="")</code></pre>
+                </div>
+
+                <h2>Node.js</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>bash</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>npm install openai</code></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>javascript</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: 'sk-your-api-key',
+  baseURL: 'https://meifu.tech/v1',
+});
+
+async function main() {
+  const stream = await client.chat.completions.create({
+    model: 'gpt-4o',
+    messages: [{ role: 'user', content: '你好' }],
+    stream: true,
+  });
+
+  for await (const chunk of stream) {
+    process.stdout.write(chunk.choices[0]?.delta?.content || '');
+  }
+}
+
+main();</code></pre>
+                </div>
+
+                <h2>cURL</h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>bash</span>
+                        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+                    </div>
+                    <pre><code>curl https://meifu.tech/v1/chat/completions \
+  -H "Authorization: Bearer sk-your-api-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-4o",
+    "messages": [{"role": "user", "content": "Hello!"}],
+    "stream": true
+  }'</code></pre>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                <span>MeifuAI</span>
+            </div>
+            <div class="footer-links">
+                <a href="docs.html">文档</a>
+                <a href="pricing.html">定价</a>
+                <a href="login.html">登录</a>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2025 MeifuAI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/docs.js"></script>
+</body>
+</html>

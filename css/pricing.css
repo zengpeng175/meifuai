@@ -1,0 +1,263 @@
+/* ============================
+   Pricing Page Styles
+   ============================ */
+
+.pricing-main {
+    position: relative;
+    z-index: 1;
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+/* Header */
+.pricing-header {
+    text-align: center;
+    padding: 48px 24px 0;
+}
+
+.pricing-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 400;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.pricing-desc {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 52px;
+}
+
+/* Filters */
+.pricing-filters {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px;
+    margin-bottom: 48px;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-tab {
+    padding: 9px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--border-light);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-tab:hover {
+    border-color: var(--accent);
+    color: var(--accent-light);
+    background: var(--accent-glow);
+}
+
+.filter-tab.active {
+    background: var(--accent-glow-strong);
+    border-color: var(--accent);
+    color: var(--accent-light);
+    box-shadow: 0 0 20px -5px rgba(99, 102, 241, 0.2);
+}
+
+/* Pricing Table */
+.pricing-table-section {
+    padding: 0 24px;
+    max-width: 1100px;
+    margin: 0 auto 100px;
+}
+
+.pricing-table-container {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.pricing-table thead {
+    background: rgba(99, 102, 241, 0.04);
+}
+
+.pricing-table th {
+    padding: 18px 24px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.pricing-table td {
+    padding: 18px 24px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+}
+
+.pricing-table tbody tr {
+    transition: all var(--transition);
+}
+
+.pricing-table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.04);
+}
+
+.pricing-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.pricing-table tbody tr.hidden {
+    display: none;
+}
+
+.model-name {
+    font-family: ui-monospace, 'Fira Code', monospace;
+    font-weight: 600;
+    color: var(--accent-light) !important;
+    font-size: 13px;
+}
+
+.provider-tag {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff !important;
+}
+
+.provider-tag.openai { background: linear-gradient(135deg, #1a7f64, #0d9488); }
+.provider-tag.anthropic { background: linear-gradient(135deg, #d97706, #b45309); }
+.provider-tag.google { background: linear-gradient(135deg, #4285f4, #34a853); }
+.provider-tag.zhipu { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.provider-tag.moonshot { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+.provider-tag.qwen { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.provider-tag.minimax { background: linear-gradient(135deg, #ec4899, #db2777); }
+
+/* Notes Section */
+.pricing-notes {
+    padding: 0 24px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.notes-title {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 48px;
+    color: var(--text-primary);
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.note-card {
+    padding: 32px 28px;
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.note-card:hover {
+    border-color: rgba(99, 102, 241, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 40px -10px rgba(99, 102, 241, 0.08);
+}
+
+.note-icon {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.note-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.note-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* Pricing CTA */
+.pricing-cta {
+    text-align: center;
+    padding: 100px 24px;
+    position: relative;
+}
+
+.pricing-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(99, 102, 241, 0.06), transparent 60%);
+    pointer-events: none;
+    filter: blur(60px);
+}
+
+.pricing-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 400;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+}
+
+.pricing-cta p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .notes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+        padding: 12px 16px;
+    }
+}
